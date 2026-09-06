@@ -1,0 +1,30 @@
+[project]
+name = "dxf-mcp"
+version = "0.1.0"
+description = "An MCP server that gives agents structured, read-only access to DXF drawings: bills of material from block attributes, layer inventories, and drafting-standards checks."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Ranjit Sahota" }]
+keywords = ["mcp", "model-context-protocol", "dxf", "cad", "autocad", "pdm", "bom"]
+
+dependencies = [
+    "mcp>=1.2.0",
+    "ezdxf>=1.3.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+dxf-mcp = "dxf_mcp.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dxf_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
